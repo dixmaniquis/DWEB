@@ -1,4 +1,6 @@
-
+<?php
+require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -54,8 +56,32 @@
             text-align: left;
         }
 
-        .success { color: #216d45; }
-        .error { color: #ad2532; }
+        nav a {
+            color: #165b43;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .banner {
+            background: #e8f4ee;
+            border-left: 5px solid #165b43;
+            padding: 10px 14px;
+            margin: 12px 0;
+        }
+
+        .note {
+            color: #555;
+            font-size: 0.9em;
+            margin: 2px 0;
+        }
+
+        .success {
+            color: #216d45;
+        }
+
+        .error {
+            color: #ad2532;
+        }
     </style>
 </head>
 <body>

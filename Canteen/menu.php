@@ -1,35 +1,34 @@
-
-<h2>Available Menu</h2>
+<?php
+require_once 'data.php';
+?>
+<h2 id = "menu">Available Menu</h2>
 
 <table>
     <tr>
         <th>Code</th>
         <th>Product</th>
+        <th>Type</th>
         <th>Price</th>
+        <th>Availability</th>
     </tr>
+<?php foreach ($products as $code => $info) {
+
+    if ($info['stock'] === 0) {
+        $availability = 'Sold out';
+    } elseif ($info['stock'] <= 5) {
+        $availability = 'Low stock (' . $info['stock'] . ' left)';
+    } else {
+        $availability = 'Available';
+    }
+
+    $typeLabel = $info['category'] === 'food' ? 'Meal' : 'Drink';
+?>
     <tr>
-        <td>M1</td>
-        <td>Chicken Adobo Meal</td>
-        <td>₱85.00</td>
+        <td><?= $code ?></td>
+        <td><?= htmlspecialchars($info['name']) ?></td>
+        <td><?= $typeLabel ?></td>
+        <td>₱<?= number_format($info['price'], 2) ?></td>
+        <td><?= $availability ?></td>
     </tr>
-    <tr>
-        <td>M2</td>
-        <td>Pork Sisig Meal</td>
-        <td>₱100.00</td>
-    </tr>
-    <tr>
-        <td>M3</td>
-        <td>Vegetable Meal</td>
-        <td>₱70.00</td>
-    </tr>
-    <tr>
-        <td>D1</td>
-        <td>Bottled Water</td>
-        <td>₱20.00</td>
-    </tr>
-    <tr>
-        <td>D2</td>
-        <td>Iced Tea</td>
-        <td>₱35.00</td>
-    </tr>
+<?php } ?>
 </table>
